@@ -6,178 +6,179 @@
     <title>hello phaser!</title>
     <script src="../js/phaser.min.js"></script>
     <script type="text/javascript">
-		var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
-		
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+
         function preload() {
             game.load.image('sky', '../images/BG.png');
             game.load.image('ground', '../images/platform.png');
             game.load.image('star', '../images/star.png');
-            game.load.spritesheet('dude', '../images/dude.png', 32, 48);
-			game.load.image('plat1', '../images/1.png');
-			game.load.image('plat2', '../images/2.png');
-			game.load.image('plat3', '../images/3.png');
-			game.load.image('plat4', '../images/4.png');
-			game.load.image('plat5', '../images/5.png');
-			game.load.image('plat6', '../images/6.png');
-			game.load.image('plat10', '../images/10.png');
-			game.load.image('plat11', '../images/11.png');
-			game.load.image('plat12', '../images/12.png');
-			game.load.image('plat13', '../images/13.png');
-			game.load.image('plat14', '../images/14.png');
-			game.load.image('plat15', '../images/15.png');
-			game.load.image('river1', '../images/17.png');
-			game.load.image('river2', '../images/18.png');
-			game.load.image('tree2', '../images/tree_2.png');
-			game.load.image('crate', '../images/crate.png');
+            game.load.spritesheet('dude', '../images/player.png', 412.3, 454);
+            game.load.image('plat1', '../images/1.png');
+            game.load.image('plat2', '../images/2.png');
+            game.load.image('plat3', '../images/3.png');
+            game.load.image('plat4', '../images/4.png');
+            game.load.image('plat5', '../images/5.png');
+            game.load.image('plat6', '../images/6.png');
+            game.load.image('plat10', '../images/10.png');
+            game.load.image('plat11', '../images/11.png');
+            game.load.image('plat12', '../images/12.png');
+            game.load.image('plat13', '../images/13.png');
+            game.load.image('plat14', '../images/14.png');
+            game.load.image('plat15', '../images/15.png');
+            game.load.image('river1', '../images/17.png');
+            game.load.image('river2', '../images/18.png');
+            game.load.image('tree2', '../images/tree_2.png');
+            game.load.image('crate', '../images/crate.png');
         }
 
         var player;
         var platforms;
         var cursors;
-		var style;
-		var river;
+        var style;
+        var river;
 
         function create() {
-			
+
             game.physics.startSystem(Phaser.Physics.ARCADE);
-			for(i = 0; i < 200; i++){
-				game.add.sprite(i * 1000, 0, 'sky');
-			}
-            
-			river = game.add.group();
+            for(i = 0; i < 200; i++){
+                game.add.sprite(i * 1000, 0, 'sky');
+            }
+
+            river = game.add.group();
             river.enableBody = true;
-			
-			platforms = game.add.group();
-			platforms.enableBody = true;
+
+            platforms = game.add.group();
+            platforms.enableBody = true;
 
 
-			
-			//Início Plataforma 1
+
+            //Início Plataforma 1
             var ledge = platforms.create(600, 350, 'plat13');
-			ledge.scale.setTo(0.3, 0.3)
+            ledge.scale.setTo(0.3, 0.3)
             ledge.body.immovable = true;
-			
-			for(i = 0; i < 7; i++){
-				ledge = platforms.create(635 + i * 35, 350, 'plat14');
-				ledge.scale.setTo(0.3, 0.3)
-				ledge.body.immovable = true;
-			}
-			
-			ledge = platforms.create(635 + i * 35, 350, 'plat15');
-			ledge.scale.setTo(0.3, 0.3)
-            ledge.body.immovable = true;
-			//Fim Plataforma 1
-			
-			
-			//Início Plataforma 2
-			//Linha 1
-			var ledge = platforms.create(350, 450, 'plat1');
-			ledge.scale.setTo(0.3, 0.3)
-            ledge.body.immovable = true;
-			
-			for(i = 0; i < 4; i++){
-				ledge = platforms.create(385 + i * 35, 450, 'plat2');
-				ledge.scale.setTo(0.3, 0.3)
-				ledge.body.immovable = true;
-			}
-			
-			ledge = platforms.create(525, 450, 'plat3');
-			ledge.scale.setTo(0.3, 0.3)
-            ledge.body.immovable = true;
-			
-			//Linha 2
-			var ledge = platforms.create(350, 485, 'plat4');
-			ledge.scale.setTo(0.3, 0.3)
-            ledge.body.immovable = true;
-			
-			for(i = 0; i < 4; i++){
-				ledge = platforms.create(385 + i * 35, 485, 'plat5');
-				ledge.scale.setTo(0.3, 0.3)
-				ledge.body.immovable = true;
-			}
-			
-			ledge = platforms.create(525, 485, 'plat6');
-			ledge.scale.setTo(0.3, 0.3)
-            ledge.body.immovable = true;
-			
-			//Linha 3
-			var ledge = platforms.create(350, 520, 'plat4');
-			ledge.scale.setTo(0.3, 0.3)
-            ledge.body.immovable = true;
-			
-			for(i = 0; i < 4; i++){
-				ledge = platforms.create(385 + i * 35, 520, 'plat5');
-				ledge.scale.setTo(0.3, 0.3)
-				ledge.body.immovable = true;
-			}
-			
-			ledge = platforms.create(525, 520, 'plat6');
-			ledge.scale.setTo(0.3, 0.3)
-            ledge.body.immovable = true;
-			//Fim Plataforma 2
-			
-			
-			
-			//Início Água 1
-			for(i = 0; i < 6; i++){
-				r = river.create(630 + i * 64, game.world.height - 64, 'river1');
-				r2 = river.create(630 + i * 64, game.world.height - 15, 'river2');
-				r.body.immovable = true;
-				r.scale.setTo(0.5, 0.5);
-			}
-			//Fim Água 1
-			
-			
-			
-			//Início Piso
-			//Início Piso 1
-			for(i = 0; i < 4; i++){
-				ground = platforms.create(i * 128, game.world.height - 64, 'plat2');
-				ground.body.immovable = true;
-			}
-			ground = platforms.create(i * 128, game.world.height - 64, 'plat3');
-			ground.body.immovable = true;
-			//Fim Piso 1
-			
-			//Início Piso 2
-			ground = platforms.create(1000, game.world.height - 192, 'plat1');
-			ground.body.immovable = true;
-			ground = platforms.create(1000, game.world.height - 64, 'plat4');
-			ground.body.immovable = true;
-			ground = platforms.create(1128, game.world.height - 192, 'plat3');
-			ground.body.immovable = true;
-			ground = platforms.create(1128, game.world.height - 64, 'plat10');
-			ground.body.immovable = true;
-			//Fim Piso 2
-			
-			//Início Piso 3
-			ground = platforms.create(1256, game.world.height - 64, 'plat11');
-			ground.body.immovable = true;
-			for(i = 0; i < 1000; i++){
-				ground = platforms.create(1384 + i * 128, game.world.height - 64, 'plat2');
-				ground.body.immovable = true;
-			}
-			//Fim Piso 3
-			//Fim Piso
-			
-			
 
-			
-			
+            for(i = 0; i < 7; i++){
+                ledge = platforms.create(635 + i * 35, 350, 'plat14');
+                ledge.scale.setTo(0.3, 0.3)
+                ledge.body.immovable = true;
+            }
+
+            ledge = platforms.create(635 + i * 35, 350, 'plat15');
+            ledge.scale.setTo(0.3, 0.3)
+            ledge.body.immovable = true;
+            //Fim Plataforma 1
+
+
+            //Início Plataforma 2
+            //Linha 1
+            ledge = platforms.create(350, 450, 'plat1');
+            ledge.scale.setTo(0.3, 0.3)
+            ledge.body.immovable = true;
+
+            for(i = 0; i < 4; i++){
+                ledge = platforms.create(385 + i * 35, 450, 'plat2');
+                ledge.scale.setTo(0.3, 0.3)
+                ledge.body.immovable = true;
+            }
+
+            ledge = platforms.create(525, 450, 'plat3');
+            ledge.scale.setTo(0.3, 0.3)
+            ledge.body.immovable = true;
+
+            //Linha 2
+            ledge = platforms.create(350, 485, 'plat4');
+            ledge.scale.setTo(0.3, 0.3)
+            ledge.body.immovable = true;
+
+            for(i = 0; i < 4; i++){
+                ledge = platforms.create(385 + i * 35, 485, 'plat5');
+                ledge.scale.setTo(0.3, 0.3)
+                ledge.body.immovable = true;
+            }
+
+            ledge = platforms.create(525, 485, 'plat6');
+            ledge.scale.setTo(0.3, 0.3)
+            ledge.body.immovable = true;
+
+            //Linha 3
+            ledge = platforms.create(350, 520, 'plat4');
+            ledge.scale.setTo(0.3, 0.3)
+            ledge.body.immovable = true;
+
+            for(i = 0; i < 4; i++){
+                ledge = platforms.create(385 + i * 35, 520, 'plat5');
+                ledge.scale.setTo(0.3, 0.3)
+                ledge.body.immovable = true;
+            }
+
+            ledge = platforms.create(525, 520, 'plat6');
+            ledge.scale.setTo(0.3, 0.3)
+            ledge.body.immovable = true;
+            //Fim Plataforma 2
+
+
+
+            //Início Água 1
+            for(i = 0; i < 6; i++){
+                r = river.create(630 + i * 64, game.world.height - 64, 'river1');
+                r2 = river.create(630 + i * 64, game.world.height - 15, 'river2');
+                r.body.immovable = true;
+                r.scale.setTo(0.5, 0.5);
+            }
+            //Fim Água 1
+
+
+
+            //Início Piso
+            //Início Piso 1
+            for(i = 0; i < 4; i++){
+                ground = platforms.create(i * 128, game.world.height - 64, 'plat2');
+                ground.body.immovable = true;
+            }
+            ground = platforms.create(i * 128, game.world.height - 64, 'plat3');
+            ground.body.immovable = true;
+            //Fim Piso 1
+
+            //Início Piso 2
+            ground = platforms.create(1000, game.world.height - 192, 'plat1');
+            ground.body.immovable = true;
+            ground = platforms.create(1000, game.world.height - 64, 'plat4');
+            ground.body.immovable = true;
+            ground = platforms.create(1128, game.world.height - 192, 'plat3');
+            ground.body.immovable = true;
+            ground = platforms.create(1128, game.world.height - 64, 'plat10');
+            ground.body.immovable = true;
+            //Fim Piso 2
+
+            //Início Piso 3
+            ground = platforms.create(1256, game.world.height - 64, 'plat11');
+            ground.body.immovable = true;
+            for(i = 0; i < 1000; i++){
+                ground = platforms.create(1384 + i * 128, game.world.height - 64, 'plat2');
+                ground.body.immovable = true;
+            }
+            //Fim Piso 3
+            //Fim Piso
+
+
+
+
+
             // adicionando o player
-            player = game.add.sprite(32, game.world.height - 150, 'dude');
+            player = game.add.sprite(32, game.world.height - 200, 'dude');
             game.physics.arcade.enable(player);
             player.body.bounce.y = 0.2;
             player.body.gravity.y = 500;
             player.body.collideWorldBounds = true;
-            player.animations.add('left', [0, 1, 2, 3], 8, true);
-            player.animations.add('right', [5, 6, 7, 8], 8, true);
+            player.scale.setTo(0.1, 0.1)
+            player.animations.add('left', [6, 5, 4, 3, 2, 1, 0], 8, true);
+            player.animations.add('right', [8, 9, 10, 11, 12, 13, 14], 8, true);
 
             cursors = game.input.keyboard.createCursorKeys();
-			
-			game.camera.follow(player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0);
-			
-			game.world.setBounds(0, 0, 5000, 1000);
+
+            game.camera.follow(player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0);
+
+            game.world.setBounds(0, 0, 5000, 1000);
         }
 
         function update() {
@@ -197,39 +198,55 @@
             else
             {
                 player.animations.stop();
-                player.frame = 4;
+                player.frame = 7;
             }
-            
+
             if (cursors.up.isDown && player.body.touching.down && hitPlatform)
             {
                 player.body.velocity.y = -350;
-            }            
-			
-			if(player.y == 952)
-			{
-                window.location.reload();
-			}
+            }
 
-            if(player.x > 1200 && player.x < 1250)
+            if(player.y > 800)
             {
-                console.log('checkpoint');
+                window.location.reload();
+                //resetSprite(player);
+            }
+
+            if(player.x > 1000 && player.x < 1050)
+            {
+                console.log('checkpoint 1');
+            }
+
+
+            if(player.x > 2000 && player.x < 2050)
+            {
+                console.log('checkpoint 2');
+            }
+
+            if(player.x > 3000 && player.x < 3050)
+            {
+                console.log('checkpoint 3');
+            }
+
+            if(player.x > 4000 && player.x < 4050)
+            {
+                console.log('checkpoint 4');
             }
         }
-		
-		
-		function resetSprite(sprite) {
 
-			sprite.x = game.world.bounds.right;
 
-		}
+        function resetSprite(sprite) {
+            sprite.x = game.world.bounds.left + 32;
+            sprite.y = 460;
+        }
 
-		function render() {
+        function render() {
 
-			game.debug.cameraInfo(game.camera, 32, 32);
-			game.debug.spriteCoords(player, 32, 500);
-			game.debug.text('Current style: ' + style, 150, 150);
+            game.debug.cameraInfo(game.camera, 32, 32);
+            game.debug.spriteCoords(player, 500, 32);
+            game.debug.text('Current style: ' + style, 150, 150);
 
-		}
+        }
     </script>
 </head>
 
