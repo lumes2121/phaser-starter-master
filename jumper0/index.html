@@ -42,6 +42,10 @@
         var style;
         var river;
         var setas;
+        var texto_pontuacao;
+        var pontos = 0
+
+        var checkpoints = [false, false, false, false];
 
         function create() {
             game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -58,6 +62,8 @@
             platforms = game.add.group();
             platforms.enableBody = true;
 
+            texto_pontuacao = game.add.text(32, 32, "Pontuação: " + pontos);
+            texto_pontuacao.fixedToCamera = true;
 
             //Início Plataforma 1
             var ledge = platforms.create(600, 350, 'plat13');
@@ -451,6 +457,8 @@
         function update() {
             var hitPlatform = game.physics.arcade.collide(player, platforms);
 
+            texto_pontuacao.setText("Pontuação: " + pontos)
+
             player.body.velocity.x = 0;
             if (cursors.left.isDown)
             {
@@ -479,28 +487,28 @@
                 //resetSprite(player);
             }
 
-            if(player.x > 1050 && player.x < 1100)
+            if(!checkpoints[0] && player.x > 1050 && player.x < 1100)
             {
                 console.log('checkpoint 1');
-            }
-
-
-            if(player.x > 2000 && player.x < 2050)
+                pontos += 1;
+                checkpoints[0] = true;
+            } else if(!checkpoints[1] && player.x > 2000 && player.x < 2050)
             {
                 console.log('checkpoint 2');
-            }
-
-            if(player.x > 3000 && player.x < 3050)
+                pontos += 1;
+                checkpoints[1] = true;
+            } else if(!checkpoints[2] && player.x > 3000 && player.x < 3050)
             {
                 console.log('checkpoint 3');
-            }
-
-            if(player.x > 4000 && player.x < 4050)
+                pontos += 1;
+                checkpoints[2] = true;
+            } else if(!checkpoints[3] && player.x > 4000 && player.x < 4050)
             {
                 console.log('checkpoint 4');
+                pontos += 1;
+                checkpoints[3] = true;
             }
         }
-
 
         function resetSprite(sprite) {
             sprite.x = game.world.bounds.left + 32;
@@ -508,11 +516,9 @@
         }
 
         function render() {
-
-            game.debug.cameraInfo(game.camera, 32, 32);
+            //game.debug.cameraInfo(game.camera, 32, 32);
             game.debug.spriteCoords(player, 400, 32);
-            game.debug.text('Current style: ' + style, 150, 150);
-
+            //game.debug.text('Current style: ' + style, 150, 150);
         }
     </script>
 </head>
