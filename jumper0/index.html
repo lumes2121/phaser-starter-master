@@ -19,16 +19,21 @@
             game.load.image('plat4', '../images/4.png');
             game.load.image('plat5', '../images/5.png');
             game.load.image('plat6', '../images/6.png');
+            game.load.image('plat7', '../images/7.png');
+            game.load.image('plat8', '../images/8.png');
+            game.load.image('plat9', '../images/9.png');
             game.load.image('plat10', '../images/10.png');
             game.load.image('plat11', '../images/11.png');
             game.load.image('plat12', '../images/12.png');
             game.load.image('plat13', '../images/13.png');
             game.load.image('plat14', '../images/14.png');
             game.load.image('plat15', '../images/15.png');
+            game.load.image('plat16', '../images/16.png');
             game.load.image('river1', '../images/17.png');
             game.load.image('river2', '../images/18.png');
             game.load.image('tree2', '../images/tree_2.png');
             game.load.image('crate', '../images/crate.png');
+            game.load.image('sign', '../images/Sign_2.png');
         }
 
         var player;
@@ -36,20 +41,23 @@
         var cursors;
         var style;
         var river;
+        var setas;
 
         function create() {
 
             game.physics.startSystem(Phaser.Physics.ARCADE);
             for(i = 0; i < 200; i++){
-                game.add.sprite(i * 1000, 0, 'sky');
+                game.add.sprite(i * 1000, -100, 'sky');
             }
 
             river = game.add.group();
             river.enableBody = true;
 
+            setas = game.add.group();
+            setas.enableBody = true;
+
             platforms = game.add.group();
             platforms.enableBody = true;
-
 
 
             //Início Plataforma 1
@@ -117,6 +125,126 @@
             //Fim Plataforma 2
 
 
+            //Início Plataforma 3
+            //Início Coluna 1
+            ledge = platforms.create(1650, 350, 'plat12');
+            ledge.body.immovable = true;
+
+            for (i = 0; i < 3; i++){
+                ledge = platforms.create(1650, -34 + i*128, 'plat4')
+            }
+            //Fim Coluna 1
+
+            //Início Coluna 2
+            ledge = platforms.create(1778, 350, 'plat16');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(1842, 286, 'plat8');
+            ledge.anchor.setTo(0.5, 0.5);
+            ledge.angle = 180;
+            ledge.body.immovable = true;
+
+            for (i = 0; i < 2; i++){
+                ledge = platforms.create(1778, -34 + i*128, 'plat5');
+                ledge.body.immovable = true;
+            }
+            //Fim Coluna 2
+
+            //Início Coluna 3
+            for (i = 0; i < 4; i++){
+                ledge = platforms.create(1970 + i * 128, 262, 'plat6')
+                ledge.anchor.setTo(0.5, 0.5);
+                ledge.angle = 90;
+                ledge.body.immovable = true;
+            }
+
+
+
+            for (i = 0; i < 5; i++){
+                ledge = platforms.create(1906 + i * 128, 100, 'plat5')
+                ledge.body.immovable = true;
+            }
+
+            for (i = 0; i < 5; i++){
+                ledge = platforms.create(1906 + i * 128, -28, 'plat5')
+                ledge.body.immovable = true;
+            }
+
+            ledge = platforms.create(2482, 286, 'plat10');
+            ledge.anchor.setTo(0.5, 0.5);
+            ledge.angle = 180;
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(2418, 350, 'plat12');
+            ledge.body.immovable = true;
+
+            //Fim Coluna 3
+
+            //Início Coluna 4
+            ledge = platforms.create(2546, 350, 'plat16');
+            ledge.body.immovable = true;
+
+            for (i = 0; i < 3; i++){
+                ledge = platforms.create(2546, -34 + i*128, 'plat6')
+            }
+
+
+            //Fim Coluna 4
+            //Fim Plataforma 3
+
+
+
+            //Início checkpoint
+            //Início checkpoint
+            checkpoint = setas.create(1100, 350, 'sign');
+            checkpoint.body.immovable = true;
+            //Fim checkpoint
+
+            //Início checkpoint
+            checkpoint = setas.create(2100, 350, 'sign');
+            checkpoint.body.immovable = true;
+            //Fim checkpoint
+
+            //Início checkpoint
+            checkpoint = setas.create(3100, 475, 'sign');
+            checkpoint.body.immovable = true;
+            //Fim checkpoint
+
+            //Início checkpoint
+            checkpoint = setas.create(4100, 350, 'sign');
+            checkpoint.body.immovable = true;
+            //Fim checkpoint
+            //Fim checkpoint
+
+
+            //Início Caixa
+            //Início Caixa 1
+            crate = platforms.create(1500, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+            //Fim Caixa 1
+
+            //Início Caixa 2
+            crate = platforms.create(1536, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+            //Fim Caixa 2
+
+            //Início Caixa 3
+            crate = platforms.create(1518, 463, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+            //Fim Caixa 3
+
+            //Início Caixa 4
+            crate = platforms.create(1990, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+            //Fim Caixa 4
+            //Fim Caixa
+
+
+
 
             //Início Água 1
             for(i = 0; i < 6; i++){
@@ -153,11 +281,37 @@
             //Início Piso 3
             ground = platforms.create(1256, game.world.height - 64, 'plat11');
             ground.body.immovable = true;
-            for(i = 0; i < 1000; i++){
+            for(i = 0; i < 4; i++){
                 ground = platforms.create(1384 + i * 128, game.world.height - 64, 'plat2');
                 ground.body.immovable = true;
             }
+            ground = platforms.create(1896, game.world.height - 64, 'plat7');
+            ground.body.immovable = true;
             //Fim Piso 3
+
+            //Início Piso 4
+            ground = platforms.create(2024, game.world.height - 192, 'plat1');
+            ground.body.immovable = true;
+            ground = platforms.create(2024, game.world.height - 64, 'plat8');
+            ground.body.immovable = true;
+            ground = platforms.create(2152, game.world.height - 192, 'plat3');
+            ground.body.immovable = true;
+            ground = platforms.create(2152, game.world.height - 64, 'plat10');
+            ground.body.immovable = true;
+
+
+            //Fim Piso 4
+
+            //Início Piso 5
+
+            ground = platforms.create(2275, game.world.height - 64, 'plat11');
+            ground.body.immovable = true;
+            for(i = 0; i < 1000; i++){
+                ground = platforms.create(2403 + i * 128, game.world.height - 64, 'plat2');
+                ground.body.immovable = true;
+            }
+            //Fim Piso 5
+
             //Fim Piso
 
 
@@ -165,7 +319,8 @@
 
 
             // adicionando o player
-            player = game.add.sprite(32, game.world.height - 200, 'dude');
+            //player = game.add.sprite(32, game.world.height - 200, 'dude');
+            player = game.add.sprite(2800, game.world.height - 200, 'dude');
             game.physics.arcade.enable(player);
             player.body.bounce.y = 0.2;
             player.body.gravity.y = 500;
@@ -206,13 +361,13 @@
                 player.body.velocity.y = -350;
             }
 
-            if(player.y > 800)
+            if(player.y > 954)
             {
                 window.location.reload();
                 //resetSprite(player);
             }
 
-            if(player.x > 1000 && player.x < 1050)
+            if(player.x > 1050 && player.x < 1100)
             {
                 console.log('checkpoint 1');
             }
@@ -243,7 +398,7 @@
         function render() {
 
             game.debug.cameraInfo(game.camera, 32, 32);
-            game.debug.spriteCoords(player, 500, 32);
+            game.debug.spriteCoords(player, 400, 32);
             game.debug.text('Current style: ' + style, 150, 150);
 
         }
