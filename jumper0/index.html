@@ -44,7 +44,6 @@
         var setas;
 
         function create() {
-
             game.physics.startSystem(Phaser.Physics.ARCADE);
             for(i = 0; i < 200; i++){
                 game.add.sprite(i * 1000, -100, 'sky');
@@ -158,8 +157,6 @@
                 ledge.body.immovable = true;
             }
 
-
-
             for (i = 0; i < 5; i++){
                 ledge = platforms.create(1906 + i * 128, 100, 'plat5')
                 ledge.body.immovable = true;
@@ -177,7 +174,6 @@
 
             ledge = platforms.create(2418, 350, 'plat12');
             ledge.body.immovable = true;
-
             //Fim Coluna 3
 
             //Início Coluna 4
@@ -187,11 +183,8 @@
             for (i = 0; i < 3; i++){
                 ledge = platforms.create(2546, -34 + i*128, 'plat6')
             }
-
-
             //Fim Coluna 4
             //Fim Plataforma 3
-
 
 
             //Início checkpoint
@@ -211,7 +204,7 @@
             //Fim checkpoint
 
             //Início checkpoint
-            checkpoint = setas.create(4100, 350, 'sign');
+            checkpoint = setas.create(4170, 295, 'sign');
             checkpoint.body.immovable = true;
             //Fim checkpoint
             //Fim checkpoint
@@ -222,30 +215,158 @@
             crate = platforms.create(1500, 500, 'crate');
             crate.scale.setTo(0.5, 0.5)
             crate.body.immovable = true;
+
+            crate = platforms.create(1536, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(1518, 463, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
             //Fim Caixa 1
 
             //Início Caixa 2
-            crate = platforms.create(1536, 500, 'crate');
+            crate = platforms.create(1990, 500, 'crate');
             crate.scale.setTo(0.5, 0.5)
             crate.body.immovable = true;
             //Fim Caixa 2
 
             //Início Caixa 3
-            crate = platforms.create(1518, 463, 'crate');
+            //Início Coluna 1
+            crate = platforms.create(3300, 500, 'crate');
             crate.scale.setTo(0.5, 0.5)
             crate.body.immovable = true;
-            //Fim Caixa 3
 
-            //Início Caixa 4
-            crate = platforms.create(1990, 500, 'crate');
+            crate = platforms.create(3300, 500 - 36, 'crate');
             crate.scale.setTo(0.5, 0.5)
             crate.body.immovable = true;
-            //Fim Caixa 4
+
+            crate = platforms.create(3300, 500 - 72, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+            //Fim Coluna 1
+
+            //Início Coluna 2
+            crate = platforms.create(3500, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3500, 500 - 36, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3500, 500 - 72, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3500, 500 - 108, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+            //Fim Coluna 2
+
+            crate = platforms.create(3600, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            //Início Coluna 3
+            crate = platforms.create(3700, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3700, 500 - 36, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3700, 500 - 72, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3700, 500 - 108, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3700, 500 - 144, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+            //Fim Coluna 3
+
+            crate = platforms.create(3800, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            //Início Coluna 4
+            crate = platforms.create(3900, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3900, 500 - 36, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3900, 500 - 72, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(3900, 500 - 108, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+            //Fim Coluna 4
+
+            //Início Coluna 5
+            crate = platforms.create(4100, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4100, 500 - 36, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4100, 500 - 72, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4136, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4136, 500 - 36, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4136, 500 - 72, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4136, 500 - 108, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4172, 500, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4172, 500 - 36, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4172, 500 - 72, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4172, 500 - 108, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+
+            crate = platforms.create(4172, 500 - 144, 'crate');
+            crate.scale.setTo(0.5, 0.5)
+            crate.body.immovable = true;
+            //Fim Coluna 5
+            //Fim Caixa 3
             //Fim Caixa
 
 
 
-
+            //Início Água
             //Início Água 1
             for(i = 0; i < 6; i++){
                 r = river.create(630 + i * 64, game.world.height - 64, 'river1');
@@ -254,7 +375,7 @@
                 r.scale.setTo(0.5, 0.5);
             }
             //Fim Água 1
-
+            //Fim Água
 
 
             //Início Piso
@@ -298,12 +419,9 @@
             ground.body.immovable = true;
             ground = platforms.create(2152, game.world.height - 64, 'plat10');
             ground.body.immovable = true;
-
-
             //Fim Piso 4
 
             //Início Piso 5
-
             ground = platforms.create(2275, game.world.height - 64, 'plat11');
             ground.body.immovable = true;
             for(i = 0; i < 1000; i++){
@@ -311,16 +429,10 @@
                 ground.body.immovable = true;
             }
             //Fim Piso 5
-
             //Fim Piso
 
-
-
-
-
-            // adicionando o player
-            //player = game.add.sprite(32, game.world.height - 200, 'dude');
-            player = game.add.sprite(2800, game.world.height - 200, 'dude');
+            //Adicionando o player
+            player = game.add.sprite(32, game.world.height - 200, 'dude');
             game.physics.arcade.enable(player);
             player.body.bounce.y = 0.2;
             player.body.gravity.y = 500;
