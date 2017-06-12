@@ -1,12 +1,22 @@
 <!doctype html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>hello phaser!</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../js/phaser.min.js"></script>
+    <script src="../js/app.js"></script>
     <script type="text/javascript">
-        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+        get_palavras();
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+            preload: preload,
+            create: create,
+            update: update,
+            render: render
+        });
 
         function preload() {
             game.load.image('sky', '../images/BG.png');
@@ -33,7 +43,7 @@
             game.load.image('river2', '../images/18.png');
             game.load.image('tree2', '../images/tree_2.png');
             game.load.image('crate', '../images/crate.png');
-            game.load.image('sign', '../images/Sign_2.png');
+            game.load.image('sign', '../images/sign_2.png');
         }
 
         var player;
@@ -43,13 +53,13 @@
         var river;
         var setas;
         var texto_pontuacao;
-        var pontos = 0
+        var pontos = 0;
 
         var checkpoints = [false, false, false, false];
 
         function create() {
             game.physics.startSystem(Phaser.Physics.ARCADE);
-            for(i = 0; i < 200; i++){
+            for (i = 0; i < 200; i++) {
                 game.add.sprite(i * 1000, -100, 'sky');
             }
 
@@ -67,17 +77,17 @@
 
             //Início Plataforma 1
             var ledge = platforms.create(600, 350, 'plat13');
-            ledge.scale.setTo(0.3, 0.3)
+            ledge.scale.setTo(0.3, 0.3);
             ledge.body.immovable = true;
 
-            for(i = 0; i < 7; i++){
+            for (i = 0; i < 7; i++) {
                 ledge = platforms.create(635 + i * 35, 350, 'plat14');
-                ledge.scale.setTo(0.3, 0.3)
+                ledge.scale.setTo(0.3, 0.3);
                 ledge.body.immovable = true;
             }
 
             ledge = platforms.create(635 + i * 35, 350, 'plat15');
-            ledge.scale.setTo(0.3, 0.3)
+            ledge.scale.setTo(0.3, 0.3);
             ledge.body.immovable = true;
             //Fim Plataforma 1
 
@@ -85,12 +95,12 @@
             //Início Plataforma 2
             //Linha 1
             ledge = platforms.create(350, 450, 'plat1');
-            ledge.scale.setTo(0.3, 0.3)
+            ledge.scale.setTo(0.3, 0.3);
             ledge.body.immovable = true;
 
-            for(i = 0; i < 4; i++){
+            for (i = 0; i < 4; i++) {
                 ledge = platforms.create(385 + i * 35, 450, 'plat2');
-                ledge.scale.setTo(0.3, 0.3)
+                ledge.scale.setTo(0.3, 0.3);
                 ledge.body.immovable = true;
             }
 
@@ -100,32 +110,32 @@
 
             //Linha 2
             ledge = platforms.create(350, 485, 'plat4');
-            ledge.scale.setTo(0.3, 0.3)
+            ledge.scale.setTo(0.3, 0.3);
             ledge.body.immovable = true;
 
-            for(i = 0; i < 4; i++){
+            for (i = 0; i < 4; i++) {
                 ledge = platforms.create(385 + i * 35, 485, 'plat5');
-                ledge.scale.setTo(0.3, 0.3)
+                ledge.scale.setTo(0.3, 0.3);
                 ledge.body.immovable = true;
             }
 
             ledge = platforms.create(525, 485, 'plat6');
-            ledge.scale.setTo(0.3, 0.3)
+            ledge.scale.setTo(0.3, 0.3);
             ledge.body.immovable = true;
 
             //Linha 3
             ledge = platforms.create(350, 520, 'plat4');
-            ledge.scale.setTo(0.3, 0.3)
+            ledge.scale.setTo(0.3, 0.3);
             ledge.body.immovable = true;
 
-            for(i = 0; i < 4; i++){
+            for (i = 0; i < 4; i++) {
                 ledge = platforms.create(385 + i * 35, 520, 'plat5');
-                ledge.scale.setTo(0.3, 0.3)
+                ledge.scale.setTo(0.3, 0.3);
                 ledge.body.immovable = true;
             }
 
             ledge = platforms.create(525, 520, 'plat6');
-            ledge.scale.setTo(0.3, 0.3)
+            ledge.scale.setTo(0.3, 0.3);
             ledge.body.immovable = true;
             //Fim Plataforma 2
 
@@ -135,8 +145,8 @@
             ledge = platforms.create(1650, 350, 'plat12');
             ledge.body.immovable = true;
 
-            for (i = 0; i < 3; i++){
-                ledge = platforms.create(1650, -34 + i*128, 'plat4')
+            for (i = 0; i < 3; i++) {
+                ledge = platforms.create(1650, -34 + i * 128, 'plat4')
             }
             //Fim Coluna 1
 
@@ -149,26 +159,26 @@
             ledge.angle = 180;
             ledge.body.immovable = true;
 
-            for (i = 0; i < 2; i++){
-                ledge = platforms.create(1778, -34 + i*128, 'plat5');
+            for (i = 0; i < 2; i++) {
+                ledge = platforms.create(1778, -34 + i * 128, 'plat5');
                 ledge.body.immovable = true;
             }
             //Fim Coluna 2
 
             //Início Coluna 3
-            for (i = 0; i < 4; i++){
+            for (i = 0; i < 4; i++) {
                 ledge = platforms.create(1970 + i * 128, 262, 'plat6')
                 ledge.anchor.setTo(0.5, 0.5);
                 ledge.angle = 90;
                 ledge.body.immovable = true;
             }
 
-            for (i = 0; i < 5; i++){
+            for (i = 0; i < 5; i++) {
                 ledge = platforms.create(1906 + i * 128, 100, 'plat5')
                 ledge.body.immovable = true;
             }
 
-            for (i = 0; i < 5; i++){
+            for (i = 0; i < 5; i++) {
                 ledge = platforms.create(1906 + i * 128, -28, 'plat5')
                 ledge.body.immovable = true;
             }
@@ -186,8 +196,8 @@
             ledge = platforms.create(2546, 350, 'plat16');
             ledge.body.immovable = true;
 
-            for (i = 0; i < 3; i++){
-                ledge = platforms.create(2546, -34 + i*128, 'plat6')
+            for (i = 0; i < 3; i++) {
+                ledge = platforms.create(2546, -34 + i * 128, 'plat6')
             }
             //Fim Coluna 4
             //Fim Plataforma 3
@@ -371,10 +381,9 @@
             //Fim Caixa
 
 
-
             //Início Água
             //Início Água 1
-            for(i = 0; i < 6; i++){
+            for (i = 0; i < 6; i++) {
                 r = river.create(630 + i * 64, game.world.height - 64, 'river1');
                 r2 = river.create(630 + i * 64, game.world.height - 15, 'river2');
                 r.body.immovable = true;
@@ -386,7 +395,7 @@
 
             //Início Piso
             //Início Piso 1
-            for(i = 0; i < 4; i++){
+            for (i = 0; i < 4; i++) {
                 ground = platforms.create(i * 128, game.world.height - 64, 'plat2');
                 ground.body.immovable = true;
             }
@@ -408,7 +417,7 @@
             //Início Piso 3
             ground = platforms.create(1256, game.world.height - 64, 'plat11');
             ground.body.immovable = true;
-            for(i = 0; i < 4; i++){
+            for (i = 0; i < 4; i++) {
                 ground = platforms.create(1384 + i * 128, game.world.height - 64, 'plat2');
                 ground.body.immovable = true;
             }
@@ -430,7 +439,7 @@
             //Início Piso 5
             ground = platforms.create(2275, game.world.height - 64, 'plat11');
             ground.body.immovable = true;
-            for(i = 0; i < 1000; i++){
+            for (i = 0; i < 1000; i++) {
                 ground = platforms.create(2403 + i * 128, game.world.height - 64, 'plat2');
                 ground.body.immovable = true;
             }
@@ -457,54 +466,44 @@
         function update() {
             var hitPlatform = game.physics.arcade.collide(player, platforms);
 
-            texto_pontuacao.setText("Pontuação: " + pontos)
+            texto_pontuacao.setText("Pontuação: " + pontos);
 
             player.body.velocity.x = 0;
-            if (cursors.left.isDown)
-            {
+            if (cursors.left.isDown) {
                 player.body.velocity.x = -150;
                 player.animations.play('left');
             }
-            else if (cursors.right.isDown)
-            {
+            else if (cursors.right.isDown) {
                 player.body.velocity.x = 150;
                 player.animations.play('right');
             }
-            else
-            {
+            else {
                 player.animations.stop();
                 player.frame = 7;
             }
 
-            if (cursors.up.isDown && player.body.touching.down && hitPlatform)
-            {
+            if (cursors.up.isDown && player.body.touching.down && hitPlatform) {
                 player.body.velocity.y = -350;
             }
 
-            if(player.y > 954)
-            {
+            if (player.y > 954) {
                 window.location.reload();
                 //resetSprite(player);
             }
 
-            if(!checkpoints[0] && player.x > 1050 && player.x < 1100)
-            {
-                console.log('checkpoint 1');
-                pontos += 1;
+            if (!checkpoints[0] && player.x > 1050 && player.x < 1100) {
+                openDesafio();
                 checkpoints[0] = true;
-            } else if(!checkpoints[1] && player.x > 2000 && player.x < 2050)
-            {
-                console.log('checkpoint 2');
+            } else if (!checkpoints[1] && player.x > 2000 && player.x < 2050) {
+                openDesafio();
                 pontos += 1;
                 checkpoints[1] = true;
-            } else if(!checkpoints[2] && player.x > 3000 && player.x < 3050)
-            {
-                console.log('checkpoint 3');
+            } else if (!checkpoints[2] && player.x > 3000 && player.x < 3050) {
+                openDesafio();
                 pontos += 1;
                 checkpoints[2] = true;
-            } else if(!checkpoints[3] && player.x > 4000 && player.x < 4050)
-            {
-                console.log('checkpoint 4');
+            } else if (!checkpoints[3] && player.x > 4000 && player.x < 4050) {
+                openDesafio();
                 pontos += 1;
                 checkpoints[3] = true;
             }
@@ -520,10 +519,32 @@
             game.debug.spriteCoords(player, 400, 32);
             //game.debug.text('Current style: ' + style, 150, 150);
         }
+
     </script>
 </head>
-
 <body>
+<div id="modal1" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <input id="desafioResposta" type="hidden" value="">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img id="labelImagem" class="img-thumbnail">
+                    </div>
+                </div>
+                <div class="row mt-3 text-center">
+                    <div class="col-md-12" id="labelDesafio">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="resposta()" class="btn btn-primary">Responder</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-
 </html>
