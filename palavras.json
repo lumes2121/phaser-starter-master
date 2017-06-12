@@ -1,0 +1,26 @@
+{
+  "palavras": [
+    {
+      "codigo": 1,
+      "imagem": "beber.jpg",
+      "palavra": "beber",
+      "alternativas": [
+        "deder",
+        "beder",
+        "beber",
+        "dede"
+      ]
+    },
+    {
+      "codigo": 2,
+      "imagem": "brinquedo.jpg",
+      "palavra": "brinquedo",
+      "alternativas": [
+        "bringuedo",
+        "briguedo",
+        "brinquedo",
+        "brinquebo"
+      ]
+    }
+  ]
+}
