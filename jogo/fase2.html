@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8"/>
-    <title>hello phaser!</title>
+    <title>Fase 2</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -12,7 +12,6 @@
     <script src="../js/phaser.min.js"></script>
     <script src="../js/app.js"></script>
     <script type="text/javascript">
-        get_palavras();
         var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
             preload: preload,
             create: create,
@@ -21,32 +20,33 @@
         });
 
         function preload() {
-            game.load.image('sky', '../images/BG.png');
-            game.load.image('ground', '../images/platform.png');
+            game.load.image('sky', '../images/fase2/BG.png');
+            game.load.image('ground', '../images/fase2/platform.png');
             game.load.image('star', '../images/star.png');
             game.load.spritesheet('dude', '../images/player.png', 412.3, 454);
-            game.load.image('plat1', '../images/1.png');
-            game.load.image('plat2', '../images/2.png');
-            game.load.image('plat3', '../images/3.png');
-            game.load.image('plat4', '../images/4.png');
-            game.load.image('plat5', '../images/5.png');
-            game.load.image('plat6', '../images/6.png');
-            game.load.image('plat7', '../images/7.png');
-            game.load.image('plat8', '../images/8.png');
-            game.load.image('plat9', '../images/9.png');
-            game.load.image('plat10', '../images/10.png');
-            game.load.image('plat11', '../images/11.png');
-            game.load.image('plat12', '../images/12.png');
-            game.load.image('plat13', '../images/13.png');
-            game.load.image('plat14', '../images/14.png');
-            game.load.image('plat15', '../images/15.png');
-            game.load.image('plat16', '../images/16.png');
-            game.load.image('river1', '../images/17.png');
-            game.load.image('river2', '../images/18.png');
+            game.load.image('plat1', '../images/fase2/1.png');
+            game.load.image('plat2', '../images/fase2/2.png');
+            game.load.image('plat3', '../images/fase2/3.png');
+            game.load.image('plat4', '../images/fase2/4.png');
+            game.load.image('plat5', '../images/fase2/5.png');
+            game.load.image('plat6', '../images/fase2/6.png');
+            game.load.image('plat7', '../images/fase2/7.png');
+            game.load.image('plat8', '../images/fase2/8.png');
+            game.load.image('plat9', '../images/fase2/9.png');
+            game.load.image('plat10', '../images/fase2/10.png');
+            game.load.image('plat11', '../images/fase2/11.png');
+            game.load.image('plat12', '../images/fase2/12.png');
+            game.load.image('plat13', '../images/fase2/13.png');
+            game.load.image('plat14', '../images/fase2/14.png');
+            game.load.image('plat15', '../images/fase2/15.png');
+            game.load.image('plat16', '../images/fase2/16.png');
+            game.load.image('river1', '../images/fase2/17.png');
+            game.load.image('river2', '../images/fase2/18.png');
             game.load.image('tree2', '../images/tree_2.png');
-            game.load.image('crate', '../images/crate.png');
-            //game.load.image('sign', '../images/sign_2.png');
-            game.load.image('checkpoint', '../images/mushroom1.png');
+            game.load.image('icebox', '../images/fase2/icebox.png');
+            game.load.image('crate', '../images/fase2/Crate.png');
+            game.load.image('sign', '../images/fase2/sign.png');
+            game.load.image('checkpoint', '../images/fase2/crystal.png');
         }
 
         var player;
@@ -76,25 +76,9 @@
             _texto_pontuacao = game.add.text(32, 32, "Pontuação: " + _pontos);
             _texto_pontuacao.fixedToCamera = true;
 
-            //Início Plataforma 1
-            var ledge = platforms.create(600, 350, 'plat13');
-            ledge.scale.setTo(0.3, 0.3);
-            ledge.body.immovable = true;
-
-            for (i = 0; i < 7; i++) {
-                ledge = platforms.create(635 + i * 35, 350, 'plat14');
-                ledge.scale.setTo(0.3, 0.3);
-                ledge.body.immovable = true;
-            }
-
-            ledge = platforms.create(635 + i * 35, 350, 'plat15');
-            ledge.scale.setTo(0.3, 0.3);
-            ledge.body.immovable = true;
-            //Fim Plataforma 1
-
-
             //Início Plataforma 2
             //Linha 1
+
             ledge = platforms.create(350, 450, 'plat1');
             ledge.scale.setTo(0.3, 0.3);
             ledge.body.immovable = true;
@@ -164,218 +148,244 @@
                 ledge = platforms.create(1778, -34 + i * 128, 'plat5');
                 ledge.body.immovable = true;
             }
+            crate = platforms.create(1900, 285, 'crate');
+            crate.scale.setTo(0.5, 0.5);
+            crate.body.immovable = true;
+
+            crate = platforms.create(1900, 85, 'crate');
+            crate.scale.setTo(0.5, 0.5);
+            crate.body.immovable = true;
             //Fim Coluna 2
 
             //Início Coluna 3
-            for (i = 0; i < 4; i++) {
-                ledge = platforms.create(1970 + i * 128, 262, 'plat6');
-                ledge.anchor.setTo(0.5, 0.5);
-                ledge.angle = 90;
+
+            for (i = 0; i < 5; i++) {
+                ledge = platforms.create(2150 + i * 128, 400, 'plat5');
+                ledge.body.immovable = true;
+            }
+            for (i = 0; i < 5; i++) {
+                ledge = platforms.create(2150 + i * 128, 300, 'plat5');
                 ledge.body.immovable = true;
             }
 
             for (i = 0; i < 5; i++) {
-                ledge = platforms.create(1906 + i * 128, 100, 'plat5');
+                ledge = platforms.create(2150 + i * 128, 200, 'plat5');
                 ledge.body.immovable = true;
             }
 
             for (i = 0; i < 5; i++) {
-                ledge = platforms.create(1906 + i * 128, -28, 'plat5');
+                ledge = platforms.create(2150 + i * 128, 100, 'plat5');
                 ledge.body.immovable = true;
             }
 
-            ledge = platforms.create(2482, 286, 'plat10');
-            ledge.anchor.setTo(0.5, 0.5);
-            ledge.angle = 180;
-            ledge.body.immovable = true;
 
-            ledge = platforms.create(2418, 350, 'plat12');
-            ledge.body.immovable = true;
-            //Fim Coluna 3
+            crate = platforms.create(2100, 385, 'crate');
+            crate.scale.setTo(0.5, 0.5);
+            crate.body.immovable = true;
 
-            //Início Coluna 4
-            ledge = platforms.create(2546, 350, 'plat16');
-            ledge.body.immovable = true;
+            crate = platforms.create(2100, 185, 'crate');
+            crate.scale.setTo(0.5, 0.5);
+            crate.body.immovable = true;
 
-            for (i = 0; i < 3; i++) {
-                ledge = platforms.create(2546, -34 + i * 128, 'plat6')
-            }
             //Fim Coluna 4
             //Fim Plataforma 3
 
 
             //Início checkpoint
-            checkpoint = setas.create(1100, 369, 'checkpoint');
+            checkpoint = setas.create(1500, 330, 'checkpoint');
             checkpoint.body.immovable = true;
             //Fim checkpoint
 
             //Início checkpoint
-            checkpoint = setas.create(2100, 369, 'checkpoint');
+            checkpoint = setas.create(2100, 330, 'checkpoint');
             checkpoint.body.immovable = true;
             //Fim checkpoint
 
             //Início checkpoint
-            checkpoint = setas.create(3100, 496, 'checkpoint');
+            checkpoint = setas.create(3100, 460, 'checkpoint');
             checkpoint.body.immovable = true;
             //Fim checkpoint
 
             //Início checkpoint
-            checkpoint = setas.create(4170, 315, 'checkpoint');
+            checkpoint = setas.create(4435, 460, 'checkpoint');
             checkpoint.body.immovable = true;
             //Fim checkpoint
             //Fim checkpoint
+
+            //Fim do jogo
+            sign = setas.create(4883, 460, 'sign');
+            sign.body.immovable = true;
 
 
             //Início Caixa
             //Início Caixa 1
-            crate = platforms.create(1500, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(1500, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(1536, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(1536, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(1518, 463, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(1518, 454, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
             //Fim Caixa 1
 
             //Início Caixa 2
-            crate = platforms.create(1990, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(1990, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
             //Fim Caixa 2
 
             //Início Caixa 3
             //Início Coluna 1
-            crate = platforms.create(3300, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3300, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3300, 500 - 36, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3300, 500 - 36, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3300, 500 - 72, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3300, 500 - 72, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
             //Fim Coluna 1
 
+            icebox = platforms.create(3300, 500 - 72, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
+
             //Início Coluna 2
-            crate = platforms.create(3500, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3500, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3500, 500 - 36, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3500, 500 - 36, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3500, 500 - 72, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3500, 500 - 72, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3500, 500 - 108, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3500, 500 - 108, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
             //Fim Coluna 2
 
-            crate = platforms.create(3600, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3600, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
             //Início Coluna 3
-            crate = platforms.create(3700, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3700, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3700, 500 - 36, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3700, 500 - 36, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3700, 500 - 72, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3700, 500 - 72, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3700, 500 - 108, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3700, 500 - 108, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3700, 500 - 144, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3700, 500 - 144, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
             //Fim Coluna 3
 
-            crate = platforms.create(3800, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3800, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
             //Início Coluna 4
-            crate = platforms.create(3900, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3900, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3900, 500 - 36, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3900, 500 - 36, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3900, 500 - 72, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3900, 500 - 72, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(3900, 500 - 108, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(3900, 500 - 108, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
             //Fim Coluna 4
 
             //Início Coluna 5
-            crate = platforms.create(4100, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4100, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4100, 500 - 36, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4100, 500 - 36, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4100, 500 - 72, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4100, 500 - 72, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4136, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4136, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4136, 500 - 36, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4136, 500 - 36, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4136, 500 - 72, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4136, 500 - 72, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4136, 500 - 108, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4136, 500 - 108, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4172, 500, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4172, 500, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4172, 500 - 36, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4172, 500 - 36, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4172, 500 - 72, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4172, 500 - 72, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4172, 500 - 108, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4172, 500 - 108, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
 
-            crate = platforms.create(4172, 500 - 144, 'crate');
-            crate.scale.setTo(0.5, 0.5);
-            crate.body.immovable = true;
+            icebox = platforms.create(4172, 500 - 144, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
+            //flavio
+            icebox = platforms.create(650, 330, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
+
+            icebox = platforms.create(815, 220, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
+
+            icebox = platforms.create(1100, 330, 'icebox');
+            icebox.scale.setTo(0.5, 0.5);
+            icebox.body.immovable = true;
+            //final flavio
+
+
             //Fim Coluna 5
             //Fim Caixa 3
             //Fim Caixa
@@ -383,7 +393,7 @@
 
             //Início Água
             //Início Água 1
-            for (i = 0; i < 6; i++) {
+            for (i = 0; i < 10; i++) {
                 r = river.create(630 + i * 64, game.world.height - 64, 'river1');
                 r2 = river.create(630 + i * 64, game.world.height - 15, 'river2');
                 r.body.immovable = true;
@@ -404,14 +414,7 @@
             //Fim Piso 1
 
             //Início Piso 2
-            ground = platforms.create(1000, game.world.height - 192, 'plat1');
-            ground.body.immovable = true;
-            ground = platforms.create(1000, game.world.height - 64, 'plat4');
-            ground.body.immovable = true;
-            ground = platforms.create(1128, game.world.height - 192, 'plat3');
-            ground.body.immovable = true;
-            ground = platforms.create(1128, game.world.height - 64, 'plat10');
-            ground.body.immovable = true;
+
             //Fim Piso 2
 
             //Início Piso 3
@@ -426,14 +429,7 @@
             //Fim Piso 3
 
             //Início Piso 4
-            ground = platforms.create(2024, game.world.height - 192, 'plat1');
-            ground.body.immovable = true;
-            ground = platforms.create(2024, game.world.height - 64, 'plat8');
-            ground.body.immovable = true;
-            ground = platforms.create(2152, game.world.height - 192, 'plat3');
-            ground.body.immovable = true;
-            ground = platforms.create(2152, game.world.height - 64, 'plat10');
-            ground.body.immovable = true;
+
             //Fim Piso 4
 
             //Início Piso 5
@@ -479,36 +475,46 @@
             }
             else {
                 player.animations.stop();
-                player.frame = 7;
+                player.frame = 4;
             }
 
             if (cursors.up.isDown && player.body.touching.down && hitPlatform) {
                 player.body.velocity.y = -350;
             }
 
+
+            /*
+            if (player.x > 100) {
+                //resetSprite(player)
+            }*/
+
             if (player.y > 954) {
-                window.location.reload();
-                //resetSprite(player);
+                window.location.href = 'index.html';
+                sessionStorage.setItem("pontuacao", 0);
+                get_palavras();
             }
 
             if (!checkpoints[0] && player.x > 1074 && player.x < 1122) {
-                openDesafio();
+                //openDesafioFase2();
                 checkpoints[0] = true;
             } else if (!checkpoints[1] && player.x > 2075 && player.x < 2125) {
-                openDesafio();
+                //openDesafioFase2();
                 checkpoints[1] = true;
-            } else if (!checkpoints[2] && player.x > 3000 && player.x < 3050) {
-                openDesafio();
+            } else if (!checkpoints[2] && player.x > 3096 && player.x < 3149) {
+                //openDesafioFase2();
                 checkpoints[2] = true;
-            } else if (!checkpoints[3] && player.x > 4135 && player.x < 4183) {
-                openDesafio();
+            } else if (!checkpoints[3] && player.x > 4435 && player.x < 4450) {
+                //openDesafioFase2();
                 checkpoints[3] = true;
+            }
+            if (player.x > 4888) {
+                window.location.href = 'fim.html';
             }
         }
 
         function resetSprite(sprite) {
-            sprite.x = game.world.bounds.left + 32;
-            sprite.y = 460;
+            sprite.x = game.world.bounds.left + 4681;
+            sprite.y = 490;
         }
 
         function render() {

@@ -21,6 +21,160 @@
         "brinquedo",
         "brinquebo"
       ]
+    },
+    {
+      "codigo": 3,
+      "imagem": "foguete.jpg",
+      "palavra": "foguete",
+      "alternativas": [
+        "foguete",
+        "focete",
+        "foquete",
+        "fuguete"
+      ]
+    },
+    {
+      "codigo": 4,
+      "imagem": "esquerda.jpg",
+      "palavra": "esquerda",
+      "alternativas": [
+        "espuerda",
+        "esguerda",
+        "esquerba",
+        "equerda"
+      ]
+    },
+    {
+      "codigo": 5,
+      "imagem": "noite.png",
+      "palavra": "noite",
+      "alternativas": [
+        "moite",
+        "moit3",
+        "noite",
+        "nolte"
+      ]
+    },
+    {
+      "codigo": 6,
+      "imagem": "comida.jpg",
+      "palavra": "comida",
+      "alternativas": [
+        "gomida",
+        "comida",
+        "conida",
+        "comiba"
+      ]
+    },
+    {
+      "codigo": 7,
+      "imagem": "piquenique.jpg",
+      "palavra": "piquenique",
+      "alternativas": [
+        "pequenique",
+        "piguenigue",
+        "piquenique",
+        "piqneniqne"
+      ]
+    },
+    {
+      "codigo": 8,
+      "imagem": "natureza.jpg",
+      "palavra": "natureza",
+      "alternativas": [
+        "natnreza",
+        "natureza",
+        "matureza",
+        "naturaza"
+      ]
+    },
+    {
+      "codigo": 9,
+      "imagem": "arvore.jpg",
+      "palavra": "árvore",
+      "alternativas": [
+        "árvore",
+        "árvora",
+        "árvare",
+        "árvord"
+      ]
+    },
+    {
+      "codigo": 10,
+      "imagem": "pipa.jpg",
+      "palavra": "pipa",
+      "alternativas": [
+        "dida",
+        "qiqa",
+        "pipa",
+        "piqa"
+      ]
+    },
+    {
+      "codigo": 11,
+      "imagem": "lago.jpg",
+      "palavra": "lago",
+      "alternativas": [
+        "lagro",
+        "lago",
+        "logo",
+        "loga"
+      ]
+    },
+    {
+      "codigo": 12,
+      "imagem": "animais.jpg",
+      "palavra": "animais",
+      "alternativas": [
+        "aninais",
+        "animois",
+        "animais",
+        "auimais"
+      ]
+    },
+    {
+      "codigo": 13,
+      "imagem": "cachorro.jpg",
+      "palavra": "cachorro",
+      "alternativas": [
+        "cachorro",
+        "cacnorro",
+        "cachoro",
+        "cechorro"
+      ]
+    },
+    {
+      "codigo": 14,
+      "imagem": "passarinho.png",
+      "palavra": "passarinho",
+      "alternativas": [
+        "bassarinho",
+        "qassarinho",
+        "pasarinho",
+        "passarinho"
+      ]
+    },
+    {
+      "codigo": 15,
+      "imagem": "banco.jpg",
+      "palavra": "banco",
+      "alternativas": [
+        "danco",
+        "bauco",
+        "bango",
+        "banco"
+      ]
+    },
+    {
+      "codigo": 16,
+      "imagem": "acerola.jpg",
+      "palavra": "acerola",
+      "alternativas": [
+        "acerrola",
+        "aserola",
+        "acerola",
+        "acrerola"
+      ]
     }
   ]
 }

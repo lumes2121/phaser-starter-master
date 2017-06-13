@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Fim</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../js/phaser.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script type="text/javascript">
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+            preload: preload,
+            create: create,
+            update: update,
+            render: render
+        });
+
+        function preload() {
+            game.load.image('sky', '../images/parque.jpg');
+            game.load.image('ground', '../images/fase2/platform.png');
+            game.load.image('star', '../images/star.png');
+            game.load.spritesheet('dude', '../images/player.png', 412.3, 454);
+            game.load.image('plat1', '../images/fase2/1.png');
+            game.load.image('plat2', '../images/fase2/2.png');
+            game.load.image('plat3', '../images/fase2/3.png');
+            game.load.image('plat4', '../images/fase2/4.png');
+            game.load.image('plat5', '../images/fase2/5.png');
+            game.load.image('plat6', '../images/fase2/6.png');
+            game.load.image('plat7', '../images/fase2/7.png');
+            game.load.image('plat8', '../images/fase2/8.png');
+            game.load.image('plat9', '../images/fase2/9.png');
+            game.load.image('plat10', '../images/fase2/10.png');
+            game.load.image('plat11', '../images/fase2/11.png');
+            game.load.image('plat12', '../images/fase2/12.png');
+            game.load.image('plat13', '../images/fase2/13.png');
+            game.load.image('plat14', '../images/fase2/14.png');
+            game.load.image('plat15', '../images/fase2/15.png');
+            game.load.image('plat16', '../images/fase2/16.png');
+            game.load.image('river1', '../images/fase2/17.png');
+            game.load.image('river2', '../images/fase2/18.png');
+            game.load.image('tree2', '../images/tree_2.png');
+            game.load.image('icebox', '../images/fase2/icebox.png');
+            game.load.image('crate', '../images/fase2/Crate.png');
+            game.load.image('sign', '../images/fase2/sign.png');
+            game.load.image('checkpoint', '../images/fase2/crystal.png');
+        }
+
+        var player;
+        var platforms;
+        var cursors;
+        var style;
+        var river;
+        var setas;
+
+        function create() {
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+            for (i = 0; i < 200; i++) {
+                game.add.sprite(i * 1000, -50, 'sky');
+            }
+
+            river = game.add.group();
+            river.enableBody = true;
+
+            setas = game.add.group();
+            setas.enableBody = true;
+
+            platforms = game.add.group();
+            platforms.enableBody = true;
+
+            _texto_pontuacao = game.add.text(32, 32, "Pontuação: " + _pontos);
+            _texto_pontuacao.fixedToCamera = true;
+
+            //Início Plataforma 2
+            //Linha 1
+
+            ledge = platforms.create(350, 450, 'plat1');
+            ledge.scale.setTo(0.3, 0.3);
+            ledge.body.immovable = true;
+
+            for (i = 0; i < 4; i++) {
+                ledge = platforms.create(385 + i * 35, 450, 'plat2');
+                ledge.scale.setTo(0.3, 0.3);
+                ledge.body.immovable = true;
+            }
+
+            ledge = platforms.create(525, 450, 'plat3');
+            ledge.scale.setTo(0.3, 0.3);
+            ledge.body.immovable = true;
+
+            //Linha 2
+            ledge = platforms.create(350, 485, 'plat4');
+            ledge.scale.setTo(0.3, 0.3);
+            ledge.body.immovable = true;
+
+            for (i = 0; i < 4; i++) {
+                ledge = platforms.create(385 + i * 35, 485, 'plat5');
+                ledge.scale.setTo(0.3, 0.3);
+                ledge.body.immovable = true;
+            }
+
+            ledge = platforms.create(525, 485, 'plat6');
+            ledge.scale.setTo(0.3, 0.3);
+            ledge.body.immovable = true;
+
+            //Linha 3
+            ledge = platforms.create(350, 520, 'plat4');
+            ledge.scale.setTo(0.3, 0.3);
+            ledge.body.immovable = true;
+
+            for (i = 0; i < 4; i++) {
+                ledge = platforms.create(385 + i * 35, 520, 'plat5');
+                ledge.scale.setTo(0.3, 0.3);
+                ledge.body.immovable = true;
+            }
+
+            ledge = platforms.create(525, 520, 'plat6');
+            ledge.scale.setTo(0.3, 0.3);
+            ledge.body.immovable = true;
+            //Fim Plataforma 2
+
+
+            //Início Plataforma 3
+            //Início Coluna 1
+            ledge = platforms.create(1650, 350, 'plat12');
+            ledge.body.immovable = true;
+
+            for (i = 0; i < 3; i++) {
+                ledge = platforms.create(1650, -34 + i * 128, 'plat4')
+            }
+            //Fim Coluna 1
+
+            //Início Coluna 2
+            ledge = platforms.create(1778, 350, 'plat16');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(1842, 286, 'plat8');
+            ledge.anchor.setTo(0.5, 0.5);
+            ledge.angle = 180;
+            ledge.body.immovable = true;
+
+            for (i = 0; i < 2; i++) {
+                ledge = platforms.create(1778, -34 + i * 128, 'plat5');
+                ledge.body.immovable = true;
+            }
+            crate = platforms.create(1900, 285, 'crate');
+            crate.scale.setTo(0.5, 0.5);
+            crate.body.immovable = true;
+
+            crate = platforms.create(1900, 85, 'crate');
+            crate.scale.setTo(0.5, 0.5);
+            crate.body.immovable = true;
+            //Fim Coluna 2
+
+            //Início Coluna 3
+
+            for (i = 0; i < 5; i++) {
+                ledge = platforms.create(2150 + i * 128, 400, 'plat5');
+                ledge.body.immovable = true;
+            }
+            for (i = 0; i < 5; i++) {
+                ledge = platforms.create(2150 + i * 128, 300, 'plat5');
+                ledge.body.immovable = true;
+            }
+
+            for (i = 0; i < 5; i++) {
+                ledge = platforms.create(2150 + i * 128, 200, 'plat5');
+                ledge.body.immovable = true;
+            }
+
+            for (i = 0; i < 5; i++) {
+                ledge = platforms.create(2150 + i * 128, 100, 'plat5');
+                ledge.body.immovable = true;
+            }
+
+
+            crate = platforms.create(2100, 385, 'crate');
+            crate.scale.setTo(0.5, 0.5);
+            crate.body.immovable = true;
+
+            crate = platforms.create(2100, 185, 'crate');
+            crate.scale.setTo(0.5, 0.5);
+            crate.body.immovable = true;
+
+
+            //Início Piso
+            //Início Piso 1
+            for (i = 0; i < 4; i++) {
+                ground = platforms.create(i * 128, game.world.height - 64, 'plat2');
+                ground.body.immovable = true;
+            }
+            ground = platforms.create(i * 128, game.world.height - 64, 'plat3');
+            ground.body.immovable = true;
+            //Fim Piso 1
+
+            //Adicionando o player
+            player = game.add.sprite(32, game.world.height - 200, 'dude');
+            game.physics.arcade.enable(player);
+            player.body.bounce.y = 0.2;
+            player.body.gravity.y = 500;
+            player.body.collideWorldBounds = true;
+            player.scale.setTo(0.1, 0.1);
+            player.animations.add('left', [6, 5, 4, 3, 2, 1, 0], 8, true);
+            player.animations.add('right', [8, 9, 10, 11, 12, 13, 14], 8, true);
+
+            cursors = game.input.keyboard.createCursorKeys();
+
+            game.camera.follow(player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0);
+
+            game.world.setBounds(0, 0, 5000, 1000);
+        }
+
+        function update() {
+            var hitPlatform = game.physics.arcade.collide(player, platforms);
+
+            _texto_pontuacao.setText("Pontuação: " + _pontos);
+
+            player.body.velocity.x = 0;
+            if (cursors.left.isDown) {
+                player.body.velocity.x = -150;
+                player.animations.play('left');
+            }
+            else if (cursors.right.isDown) {
+                player.body.velocity.x = 150;
+                player.animations.play('right');
+            }
+            else {
+                player.animations.stop();
+                player.frame = 7;
+            }
+
+            if (cursors.up.isDown && player.body.touching.down && hitPlatform) {
+                player.body.velocity.y = -350;
+            }
+
+            if (player.x > 4903) {
+                window.location.href = 'fim.html';
+            }
+        }
+
+        function resetSprite(sprite) {
+            sprite.x = game.world.bounds.left + 4681;
+            sprite.y = 490;
+        }
+
+        function render() {
+            //game.debug.cameraInfo(game.camera, 32, 32);
+            game.debug.spriteCoords(player, 400, 32);
+            //game.debug.text('Current style: ' + style, 150, 150);
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>
