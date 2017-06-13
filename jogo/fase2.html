@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8"/>
-    <title>hello phaser!</title>
+    <title>Fase 2</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -12,7 +12,6 @@
     <script src="../js/phaser.min.js"></script>
     <script src="../js/app.js"></script>
     <script type="text/javascript">
-        get_palavras();
         var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
             preload: preload,
             create: create,
@@ -76,9 +75,6 @@
 
             _texto_pontuacao = game.add.text(32, 32, "Pontuação: " + _pontos);
             _texto_pontuacao.fixedToCamera = true;
-
-
-
 
             //Início Plataforma 2
             //Linha 1
@@ -183,7 +179,6 @@
             }
 
 
-
             crate = platforms.create(2100, 385, 'crate');
             crate.scale.setTo(0.5, 0.5);
             crate.body.immovable = true;
@@ -218,7 +213,7 @@
             //Fim checkpoint
 
             //Fim do jogo
-            sign = setas.create(4883, 440, 'sign');
+            sign = setas.create(4883, 460, 'sign');
             sign.body.immovable = true;
 
 
@@ -480,39 +475,46 @@
             }
             else {
                 player.animations.stop();
-                player.frame = 7;
+                player.frame = 4;
             }
 
             if (cursors.up.isDown && player.body.touching.down && hitPlatform) {
                 player.body.velocity.y = -350;
             }
 
+
+            /*
+            if (player.x > 100) {
+                //resetSprite(player)
+            }*/
+
             if (player.y > 954) {
-                window.location.reload();
-                //resetSprite(player);
+                window.location.href = 'index.html';
+                sessionStorage.setItem("pontuacao", 0);
+                get_palavras();
             }
 
             if (!checkpoints[0] && player.x > 1074 && player.x < 1122) {
-                //openDesafio();
+                //openDesafioFase2();
                 checkpoints[0] = true;
             } else if (!checkpoints[1] && player.x > 2075 && player.x < 2125) {
-              //  openDesafio();
+                //openDesafioFase2();
                 checkpoints[1] = true;
             } else if (!checkpoints[2] && player.x > 3096 && player.x < 3149) {
-              //  openDesafio();
+                //openDesafioFase2();
                 checkpoints[2] = true;
             } else if (!checkpoints[3] && player.x > 4435 && player.x < 4450) {
-            //    openDesafio();
+                //openDesafioFase2();
                 checkpoints[3] = true;
             }
-            if (player.x > 4901 && player.x < 4953) {
-                console.log("proxima fase");
+            if (player.x > 4888) {
+                window.location.href = 'fim.html';
             }
         }
 
         function resetSprite(sprite) {
-            sprite.x = game.world.bounds.left + 32;
-            sprite.y = 460;
+            sprite.x = game.world.bounds.left + 4681;
+            sprite.y = 490;
         }
 
         function render() {

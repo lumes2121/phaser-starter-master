@@ -1,22 +1,43 @@
 var _texto_pontuacao;
 var _pontos = 0;
-var _palavras = [];
+if (sessionStorage.getItem("pontuacao")) {
+    _pontos = parseInt(sessionStorage.getItem("pontuacao"));
+}
+
+var _palavras = JSON.parse(sessionStorage.getItem("palavras"));
 
 function get_palavras() {
     $.getJSON("../palavras.json", function (data) {
         _palavras = data.palavras;
+        sessionStorage.setItem("palavras", JSON.stringify(_palavras));
     });
 }
+
+function get_palavras_local() {
+    _palavras = JSON.parse(sessionStorage.getItem("palavras"));
+}
+
 
 function removePalavra(palavra) {
     _palavras = jQuery.grep(_palavras, function (value) {
         return value != palavra;
     });
+    sessionStorage.setItem("palavras", JSON.stringify(_palavras));
 }
 
 function openDesafio() {
     game.paused = true;
     popularModal();
+    $('#modal1').modal({
+        backdrop: 'static',
+        show: true,
+        keyboard: false
+    });
+}
+
+function openDesafioFase2() {
+    game.paused = true;
+    popularModalFase2();
     $('#modal1').modal({
         backdrop: 'static',
         show: true,
@@ -30,8 +51,9 @@ function event_resposta() {
     $('#fromDesavio').serializeArray().map(function (x) {
         resposta[x.name] = x.value;
     });
-    if (resposta.palavra === resposta.resposta) {
+    if (resposta.palavra.toLowerCase() === resposta.resposta.toLowerCase()) {
         _pontos += 1;
+        sessionStorage.setItem("pontuacao", _pontos);
         swal({
             type: "success",
             title: "Palavra correta!!!",
@@ -44,7 +66,7 @@ function event_resposta() {
             type: "error",
             title: "Palavra errada.",
             text: 'Palavra correta é: <span style="color:#10c469; font-weight: bold">' + resposta.palavra + '</span>',
-            timer: 4000,
+            timer: 5000,
             showConfirmButton: false,
             html: true
         });
@@ -53,6 +75,7 @@ function event_resposta() {
 }
 
 function popularModal() {
+    get_palavras_local();
     var desafio = _palavras[Math.floor(Math.random() * _palavras.length)];
     var html = '';
     $("#desafioPalavra").val(desafio.palavra);
@@ -68,4 +91,16 @@ function popularModal() {
     removePalavra(desafio);
 }
 
-
+function popularModalFase2() {
+    get_palavras_local();
+    var desafio = _palavras[Math.floor(Math.random() * _palavras.length)];
+    var html = '';
+    $("#desafioPalavra").val(desafio.palavra);
+    $("#labelImagem").attr('src', '../images/desavio/' + desafio.imagem);
+    html += '<div class="form-group">';
+    html += '<label for="txtDesafio">Escreva o que você vê na imagem</label>';
+    html += '<input type="text" name="resposta" class="form-control" id="txtDesafio">';
+    html += '</div>';
+    $("#labelDesafio").html(html);
+    removePalavra(desafio);
+}

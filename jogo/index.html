@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8"/>
-    <title>hello phaser!</title>
+    <title>Fase 1</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -45,7 +45,7 @@
             game.load.image('river2', '../images/18.png');
             game.load.image('tree2', '../images/tree_2.png');
             game.load.image('crate', '../images/crate.png');
-            //game.load.image('sign', '../images/sign_2.png');
+            game.load.image('sign', '../images/sign_2.png');
             game.load.image('checkpoint', '../images/mushroom1.png');
         }
 
@@ -224,6 +224,10 @@
             checkpoint.body.immovable = true;
             //Fim checkpoint
             //Fim checkpoint
+
+            //Fim do jogo
+            sign = setas.create(4883, 482, 'sign');
+            sign.body.immovable = true;
 
 
             //Início Caixa
@@ -479,7 +483,7 @@
             }
             else {
                 player.animations.stop();
-                player.frame = 7;
+                player.frame = 4;
             }
 
             if (cursors.up.isDown && player.body.touching.down && hitPlatform) {
@@ -488,7 +492,6 @@
 
             if (player.y > 954) {
                 window.location.reload();
-                //resetSprite(player);
             }
 
             if (!checkpoints[0] && player.x > 1074 && player.x < 1122) {
@@ -497,12 +500,16 @@
             } else if (!checkpoints[1] && player.x > 2075 && player.x < 2125) {
                 openDesafio();
                 checkpoints[1] = true;
-            } else if (!checkpoints[2] && player.x > 3000 && player.x < 3050) {
+            } else if (!checkpoints[2] && player.x > 3073 && player.x < 3120) {
                 openDesafio();
                 checkpoints[2] = true;
             } else if (!checkpoints[3] && player.x > 4135 && player.x < 4183) {
                 openDesafio();
                 checkpoints[3] = true;
+            }
+            //Fim da Primeira Fase
+            if (player.x > 4897) {
+                window.location.href = 'fase2.html';
             }
         }
 
